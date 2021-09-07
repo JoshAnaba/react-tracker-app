@@ -7,7 +7,8 @@
 }
 
 .main-ctn {
-  width: 500px;
+  max-width: 500px;
+  padding: 20px;
   padding-top: 50px;
   margin: auto;
 }
@@ -24,8 +25,29 @@
   border-radius: 5px;
 }
 
+.btn-submit {
+  padding: 5px 10px;
+  background: rgb(45, 45, 139);
+  color: #fff;
+}
+
 .primary-btn {
   padding: 6px 10px;
   color: #fff;
   background: #000;
+}
+
+.task {
+  background: rgb(166, 194, 202);
+  padding: 5px;
+  margin: 7px 0;
+}
+
+.task.reminder {
+  border-left: 4px solid green;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
 }

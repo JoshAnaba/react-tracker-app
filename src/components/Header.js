@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types'
-
-const Header = ({title}) => {
+import Btn from './Btn'
+const Header = ({ title }) => {
+  const onClick = (e) => {
+    console.log(e, {
+      yo: 'f '
+    })
+  }
   return (
     <header className="header">
       {/* style={variableName} majorly used for dynamic styling */}
       <h1 style={headingStyle}>
         {title}
       </h1>
-      <input type="button" value="Add" className="primary-btn btn" />
+      <Btn color="green" text="Add" onClick={onClick} />
     </header>
   )
 }
