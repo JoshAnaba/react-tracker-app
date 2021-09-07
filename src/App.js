@@ -1,5 +1,6 @@
 
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
+// useEffect runs when the page loads
 
 import Header from './components/Header'
 import Tasks from './components/Tasks'
@@ -7,40 +8,22 @@ import AddTask from './components/AddTask'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
-   const [tasks, setTasks] = useState(
-    [
-      {
-        id: 1,
-        task: 'Doctors Appointment',
-        day: 'Feb 5th at 2.30pm',
-        reminder: true
-      },
-      {
-        id: 2,
-        task: 'Meeting at school',
-        day: 'Feb 6th at 1.30pm',
-        reminder: true
-      },
-      {
-        id: 3,
-        task: 'Meeting at school',
-        day: 'Feb 6th at 1.30pm',
-        reminder: false
-      },
-      {
-        id: 4,
-        task: 'Meeting at school',
-        day: 'Feb 6th at 1.30pm',
-        reminder: true
-      },
-      {
-        id: 5,
-        task: 'Meeting at school',
-        day: 'Feb 6th at 1.30pm',
-        reminder: false
-      },
-    ]
-  )
+  const [tasks, setTasks] = useState([])
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+    getTasks()
+    // array to set useEffect to run when the value in it changes; @tm theres no value, so it is left empty ; usually called dependency
+  }, [])
+
+  
+  const fetchTasks = async () => {
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json()
+    return data
+  }
 
   // add task
   const addTask = (task) => {
