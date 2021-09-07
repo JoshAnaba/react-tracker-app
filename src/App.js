@@ -6,42 +6,49 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 
 function App() {
-  // const name = 'Josh'
-  // const bool = true
+  const [showAddTask, setShowAddTask] = useState(false)
    const [tasks, setTasks] = useState(
     [
       {
         id: 1,
-        text: 'Doctors Appointment',
+        task: 'Doctors Appointment',
         day: 'Feb 5th at 2.30pm',
         reminder: true
       },
       {
         id: 2,
-        text: 'Meeting at school',
+        task: 'Meeting at school',
         day: 'Feb 6th at 1.30pm',
         reminder: true
       },
       {
         id: 3,
-        text: 'Meeting at school',
+        task: 'Meeting at school',
         day: 'Feb 6th at 1.30pm',
         reminder: false
       },
       {
         id: 4,
-        text: 'Meeting at school',
+        task: 'Meeting at school',
         day: 'Feb 6th at 1.30pm',
         reminder: true
       },
       {
         id: 5,
-        text: 'Meeting at school',
+        task: 'Meeting at school',
         day: 'Feb 6th at 1.30pm',
         reminder: false
       },
     ]
   )
+
+  // add task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 1000) + 1
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
+    console.log(tasks, newTask)
+  }
 
   // delete task
   const deleteTask = (id) => {
@@ -53,8 +60,8 @@ function App() {
   }
   return (
     <div className="main-ctn">
-      <Header />
-      <AddTask />
+      <Header onShowAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks to Show'}
     </div>
   );
