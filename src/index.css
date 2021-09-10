@@ -41,6 +41,7 @@
   background: rgb(166, 194, 202);
   padding: 5px;
   margin: 7px 0;
+  user-select: none;
 }
 
 .task.reminder {

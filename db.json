@@ -1,34 +1,10 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "task": "Buy Food",
-      "day": "1",
-      "reminder": false
-    },
-    {
-      "id": 2,
-      "task": "Buy Food",
-      "day": "1",
-      "reminder": false
-    },
-    {
-      "id": 3,
-      "task": "Buy Food",
-      "day": "1",
-      "reminder": false
-    },
-    {
-      "id": 4,
-      "task": "Buy Food",
-      "day": "1",
-      "reminder": false
-    },
-    {
-      "id": 5,
-      "task": "Buy Food",
-      "day": "1",
-      "reminder": false
+      "task": "Yo",
+      "day": "Monday",
+      "reminder": false,
+      "id": 1
     }
   ]
 }
