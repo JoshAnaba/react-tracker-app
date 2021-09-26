@@ -2,9 +2,12 @@
 import { useState, useEffect } from 'react'
 // useEffect runs when the page loads
 
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
+import About from './components/About'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -73,11 +76,19 @@ function App() {
     setTasks(tasks.map((task)=> task.id === id ? {...task, reminder: data.reminder} : task))
   }
   return (
+    <Router>
     <div className="main-ctn">
       <Header onShowAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      {showAddTask && <AddTask onAdd={addTask} />}
+      <Route path="/" exact render={(props)=>(
+        <>
+         {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks to Show'}
+        </>
+      )}/>
+      <Route path="/about" component={About}/>
+      <Footer />
     </div>
+    </Router>
   );
 }
 

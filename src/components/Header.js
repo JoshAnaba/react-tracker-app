@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
+import { useLocation } from 'react-router'
 import Btn from './Btn'
 const Header = ({ title, onShowAdd, showAdd }) => {
+  const location = useLocation()
   return (
     <header className="header">
       {/* style={variableName} majorly used for dynamic styling */}
       <h1 style={headingStyle}>
         {title}
       </h1>
-      <Btn color={showAdd ? 'red' : 'green'} text={showAdd ? 'Close' : 'Add'} onClick={onShowAdd} />
+      {location.pathname === '/' && <Btn color={showAdd ? 'red' : 'green'} text={showAdd ? 'Close' : 'Add'} onClick={onShowAdd} />}
     </header>
   )
 }
