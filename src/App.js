@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 // useEffect runs when the page loads
 
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Tasks from './components/Tasks'
@@ -79,13 +79,14 @@ function App() {
     <Router>
     <div className="main-ctn">
       <Header onShowAdd={()=>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-      <Route path="/" exact render={(props)=>(
+      <Routes>
+      <Route path="/" element={
         <>
          {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks to Show'}
-        </>
-      )}/>
-      <Route path="/about" component={About}/>
+        </>}/>
+      <Route path="/about" element={<About />}/>
+      </Routes>
       <Footer />
     </div>
     </Router>

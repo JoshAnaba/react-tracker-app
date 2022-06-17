@@ -1,9 +1,9 @@
 {
   "tasks": [
     {
-      "task": "Yo",
-      "day": "Monday",
-      "reminder": false,
+      "task": "add",
+      "day": "yo",
+      "reminder": true,
       "id": 1
     }
   ]
